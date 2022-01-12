@@ -69,12 +69,12 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     const form = this.form.getRawValue();
-
     form.date = moment(form.date).format('MM/DD/YYYY');
-    form.treatment.id = this.data.treatment.id;
-    form.treatment.authorizationNumber =
-      this.data.treatment.authorizationNumber;
+
     if (this.data) {
+      form.treatment.id = this.data.treatment.id;
+      form.treatment.authorizationNumber =
+        this.data.treatment.authorizationNumber;
       this.schedulingService
         .update(form)
         .then(() => this.dialogRef.close())
